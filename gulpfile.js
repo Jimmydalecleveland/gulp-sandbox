@@ -2,6 +2,11 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var stylus = require('gulp-stylus');
 var sourcemaps = require('gulp-sourcemaps');
+var pug = require('gulp-pug');
+
+gulp.task('views', function buildHTML() {
+  return gulp.src('./app/views/*.pug').pipe(pug().pipe(gulp.dest('./app')));
+});
 
 gulp.task('sass', function() {
   return gulp
