@@ -3,9 +3,22 @@ var sass = require('gulp-sass');
 var stylus = require('gulp-stylus');
 var sourcemaps = require('gulp-sourcemaps');
 var pug = require('gulp-pug');
+var slim = require('gulp-slim');
 
-gulp.task('views', function buildHTML() {
-  return gulp.src('./app/views/*.pug').pipe(pug().pipe(gulp.dest('./app')));
+gulp.task('default', ['views', 'stylus']);
+
+gulp.task('views', function() {
+  return gulp
+    .src('./app/views/*.pug')
+    .pipe(pug({ pretty: true }))
+    .pipe(gulp.dest('./app'));
+});
+
+gulp.task('slim', function() {
+  return gulp
+    .src('./app/views/*.slim')
+    .pipe(slim({ pretty: true }))
+    .pipe(gulp.dest('./app'));
 });
 
 gulp.task('sass', function() {
